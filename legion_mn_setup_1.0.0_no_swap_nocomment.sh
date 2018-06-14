@@ -193,8 +193,8 @@ apt-add-repository -y ppa:bitcoin/bitcoin
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 apt-get update 
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
-build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libdb4.8-dev \
-libdb4.8++-dev libdb5.3-dev libdb5.3++-dev libminiupnpc-dev libzmq3-dev git nano tmux 
+build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev \
+libdb5.3-dev libdb5.3++-dev libminiupnpc-dev libzmq3-dev git nano tmux 
 apt-get install -y libgmp3-dev
 if [ "$?" -gt "0" ];
   then
