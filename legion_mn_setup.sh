@@ -1,16 +1,16 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='lumen.conf'
-CONFIGFOLDER='/root/.lumencore'
-COIN_DAEMON='lumend'
-COIN_CLI='lumen-cli'
+CONFIG_FILE='Legion.conf'
+CONFIGFOLDER='/root/.Legion'
+COIN_DAEMON='legiond'
+COIN_CLI='legion-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/lumenproject/lumen/releases/download/0.12.5.6/Lumen-linux.tar.gz'
+COIN_TGZ='https://github.com/Legioncrypto/Legion/archive/1.0.0.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='lumen'
-COIN_PORT=13444
-RPC_PORT=13445
+COIN_NAME='legion'
+COIN_PORT=10018
+RPC_PORT=10019
 
 NODEIP=$(curl -s4 icanhazip.com)
 
