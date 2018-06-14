@@ -209,6 +209,24 @@ fi
 clear
 }
 
+function create_swap() {
+ echo -e "Checking if swap space is needed."
+ PHYMEM=$(free -g|awk '/^Mem:/{print $2}')
+ SWAP=$(swapon -s)
+ if ][ "$PHYMEM" -lt "2"  &&  -z "$SWAP" ]]
+  then
+    echo -e "${GREEN}Server is running with less than 2G of RAM without SWAP, creating 2G swap file.${NC}"
+    SWAPFILE=$(mktemp)
+    dd if=/dev/zero of=$SWAPFILE bs=1024 count=2M
+    chmod 600 $SWAPFILE
+    mkswap $SWAPFILE
+    swapon -a $SWAPFILE
+ else
+  echo -e "${GREEN}The server running with at least 2G of RAM, or a SWAP file is already in place.${NC}"
+ fi
+ clear
+}
+
 function important_information() {
  echo -e "================================================================================================================================"
  echo -e "$COIN_NAME Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
@@ -242,5 +260,6 @@ clear
 
 checks
 prepare_system
+create_swap
 download_node
 setup_node
