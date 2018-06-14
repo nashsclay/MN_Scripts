@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.Legion'
 COIN_DAEMON='legiond'
 COIN_CLI='legion-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/Legioncrypto/Legion/archive/1.0.0.tar.gz'
+COIN_TGZ='https://github.com/nashsclay/Legion/releases/download/v1.0/Legion.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='legion'
 COIN_PORT=10018
@@ -26,7 +26,7 @@ function download_node() {
   wget -q $COIN_TGZ
   compile_error
   tar -xzvf $COIN_ZIP 
-  cd Legion-1.0.0
+  cd Legion
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd ~ >/dev/null
