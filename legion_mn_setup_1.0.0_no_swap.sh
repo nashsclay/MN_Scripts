@@ -196,7 +196,7 @@ apt-get update >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libdb4.8-dev \
 libdb4.8++-dev libminiupnpc-dev libzmq3-dev git nano tmux >/dev/null 2>&1
-apt-get install libgmp3-dev
+apt-get install -y libgmp3-dev
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
