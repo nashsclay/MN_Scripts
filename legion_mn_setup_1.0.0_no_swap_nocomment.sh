@@ -22,15 +22,15 @@ NC='\033[0m'
 
 function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
-  cd $TMP_FOLDER >/dev/null 2>&1
+  cd $TMP_FOLDER 
   wget -q $COIN_TGZ
   compile_error
-  tar -xzvf $COIN_ZIP >/dev/null 2>&1
+  tar -xzvf $COIN_ZIP 
   cd Legion-1.0.0
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd ~ >/dev/null
-  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  rm -rf $TMP_FOLDER 
   clear
 }
 
@@ -60,7 +60,7 @@ EOF
   systemctl daemon-reload
   sleep 3
   systemctl start $COIN_NAME.service
-  systemctl enable $COIN_NAME.service >/dev/null 2>&1
+  systemctl enable $COIN_NAME.service 
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
     echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
@@ -73,7 +73,7 @@ EOF
 
 
 function create_config() {
-  mkdir $CONFIGFOLDER >/dev/null 2>&1
+  mkdir $CONFIGFOLDER 
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
   cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
@@ -126,10 +126,10 @@ EOF
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
   ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
-  ufw allow ssh comment "SSH" >/dev/null 2>&1
-  ufw limit ssh/tcp >/dev/null 2>&1
-  ufw default allow outgoing >/dev/null 2>&1
-  echo "y" | ufw enable >/dev/null 2>&1
+  ufw allow ssh comment "SSH" 
+  ufw limit ssh/tcp 
+  ufw default allow outgoing 
+  echo "y" | ufw enable 
 }
 
 
@@ -185,17 +185,17 @@ fi
 
 function prepare_system() {
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
-apt-get update >/dev/null 2>&1
+apt-get update 
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
-apt install -y software-properties-common >/dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade 
+apt install -y software-properties-common 
 echo -e "${GREEN}Adding bitcoin PPA repository"
-apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
+apt-add-repository -y ppa:bitcoin/bitcoin 
 echo -e "Installing required packages, it may take some time to finish.${NC}"
-apt-get update >/dev/null 2>&1
+apt-get update 
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libdb4.8-dev \
-libdb4.8++-dev libminiupnpc-dev libzmq3-dev git nano tmux >/dev/null 2>&1
+libdb4.8++-dev libminiupnpc-dev libzmq3-dev git nano tmux 
 apt-get install -y libgmp3-dev
 if [ "$?" -gt "0" ];
   then
