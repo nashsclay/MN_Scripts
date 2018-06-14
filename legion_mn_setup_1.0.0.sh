@@ -26,7 +26,7 @@ function download_node() {
   wget -q $COIN_TGZ
   compile_error
   tar -xzvf $COIN_ZIP >/dev/null 2>&1
-  cd Lumen-linux
+  cd Legion-1.0.0
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd ~ >/dev/null
