@@ -5,7 +5,7 @@ sudo apt-get -y upgrade
 sudo apt -y upgrade
 sudo apt-get -y install build-essential libssl-dev libdb++-dev libboost-all-dev libqrencode-dev 
 git clone https://github.com/Legioncrypto/Legion.git
-cd Legion-Source/src
+cd Legion/src
 mkdir -p obj/zerocoin
 chmod +x leveldb/build_detect_platform
 cd leveldb && make libleveldb.a libmemenv.a
