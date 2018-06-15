@@ -24,8 +24,9 @@ NOTE: Don't click on the links as that will only show you code. There is no need
 
 ### Other Commands and Informaiton
 This information will be very useful once your MN is setup and ready.
-> legiond getinfo<br />
+
 Displays currention information about the masternode
+> legiond getinfo<br />
 
 > legiond masternode status<br />
 You want to see a 9 and that will show your Masternode is ready to go.
