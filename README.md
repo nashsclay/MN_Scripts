@@ -26,26 +26,26 @@ NOTE: Don't click on the links as that will only show you code. There is no need
 This information will be very useful once your MN is setup and ready.
 
 Displays currention information about the masternode
-> legiond getinfo<br />
+> legiond getinfo<br /><br />
 
 You want to see a 9 and that will show your Masternode is ready to go.
-> legiond masternode status<br />
+> legiond masternode status<br /><br />
 
 Will stop your masternode and wil automatically restart
-> legiond stop<br />
+> legiond stop<br /><br />
 
 This will allow you to edit your masternode's wallet (not your computer's wallet). You can also you this command after the setup to fix if you input the incorrect MN key. Once open and done making changes, press Ctrl + o then Enter to save changes, then Ctrl + x to exit. Then run the legiond stop to restart the MN.
 
-> nano ~/.Legion/Legion.conf<br />
+> nano ~/.Legion/Legion.conf<br /><br />
 
 This is where your legiond file is saved to
-> cd /usr/local/bin<br />
+> cd /usr/local/bin<br /><br />
 
 Return to root home folder
-> cd ~<br />
+> cd ~<br /><br />
 
 This will give you access to the folder of Legion files. Notice the period infront of the folder. If your are in the home folder and do **ls** command, it will not show the folder. Period means hidden. Correct command to display this folder in the home folder is **ls -al**
-> cd ~/.Legion<br />
+> cd ~/.Legion<br /><br />
 
 Any donations are always welcome but never expected.
 Legion - LSyPBnDJrBsVMN1j8EK1NA1QbUh8tx62Ao
