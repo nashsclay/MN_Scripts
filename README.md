@@ -1,4 +1,4 @@
-# Legion Coin
+# Legion Coin Masternode Setup
 This Legion Coin Masternode (MN) script will automatically install almost all of the MN for you. You just need to have your masternode genkey ready. This code comes from Zoldurs many many forks for MN scripts, visit his page here. https://github.com/zoldur<br /><br />
 Please note to run this script you MUST:
 1) Be root - better to login as root then use the sudo command
