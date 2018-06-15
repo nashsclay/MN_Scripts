@@ -10,12 +10,41 @@ legion_mn_setup_1.0.0_swap.sh<br />
 
 Do note that this script does enable the MN to restart if it is somehow closed. It will only make it difficult to remove the MN if you decide to sell your MN. Best way is to delete all the MN files and to restart the MN. (for more information, please vist the coin's discord)
 
-# To Install the Masternode
+## To Install the Legion Coin Masternode
+
+Go through setting up the wallet and MN infomration on your computer. Then once that is ready to go, continue on to this guide. 
+
 Please copy and paste the following commands into you connection with your server. Most common would be to use Putty.
+NOTE: Don't click on the links as that will only show you code. There is no need to do so.
 
-wget https://raw.githubusercontent.com/nashsclay/MN_Scripts/master/legion_mn_setup_1.0.0_no_swap_nocomment.sh<br />
-wget https://raw.githubusercontent.com/nashsclay/MN_Scripts/master/legion_mn_setup_1.0.0_no_swap.sh<br />
-chmod +x legion_mn_setup_1.0.0_no_swap.sh<br />
-./legion_mn_setup_1.0.0_no_swap.sh<br />
+> wget https://raw.githubusercontent.com/nashsclay/Legion/master/legion_mn_setup_v1.0.sh<br />
+> chmod +x legion_mn_setup_v1.0.sh<br />
+> ./legion_mn_setup_v1.0.sh<br />
 
-list commands here<br />
+
+### Other Commands and Informaiton
+This information will be very useful once your MN is setup and ready.
+> legiond getinfo
+Displays currention information about the masternode
+
+> legiond masternode status
+You want to see a 9 and that will show your Masternode is ready to go.
+
+> legiond stop
+Will stop your masternode and wil automatically restart
+
+nano ~/.Legion/Legion.conf
+This will allow you to edit your masternode's wallet (not your computer's wallet). You can also you this command after the setup to fix if you input the incorrect MN key. Once open and done making changes, press Ctrl + o then Enter to save changes, then Ctrl + x to exit. Then run the legiond stop to restart the MN.
+
+cd /usr/local/bin
+This is where your legiond file is saved to
+
+cd ~
+Return to root home folder
+
+cd ~/.Legion
+This will give you access to the folder of Legion files. Notice the period infront of the folder. If your are in the home folder and do **ls** command, it will not show the folder. Period means hidden. Correct command to display this folder in the home folder is **ls -al**
+
+Any donations are always welcome but never expected.
+Legion - LSyPBnDJrBsVMN1j8EK1NA1QbUh8tx62Ao
+
