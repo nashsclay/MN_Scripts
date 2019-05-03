@@ -5,6 +5,8 @@ setlocal
 cls
 SET LASTUPDATE= April 27, 2019
 SET BOOTSTRAPFILE=https://github.com/Electra-project/Electra-Bootstrap/releases/download/v1.0/ElectraBootstrap.zip
+SET PSSCRIPT=%SYSTEMDRIVE%\ElectraWalletBackup\tmpDlFile.ps1
+SET PowerShellDir=%SYSTEMDRIVE%\Windows\System32\WindowsPowerShell\v1.0
 ECHO.
 ECHO ...............................................
 ECHO ECA User Support Bootstrap Fix v1.0
@@ -53,13 +55,13 @@ taskkill /F /IM  "electrad-windows.exe" /T >nul 2>&1
 taskkill /F /IM  "Electra-qt.exe" /T >nul 2>&1
 taskkill /F /IM  "electra-qt.exe" /T >nul 2>&1
 echo.
-echo Downloading the bootstrap...
+echo Downloading the bootstrap... This may take some time as it is around 240MB
+echo File will be automatically removed when script completes
 echo.
-SET PSSCRIPT=tmpDlFile.ps1
+echo %PSSCRIPT%
 IF EXIST %PSSCRIPT% DEL /Q /F %PSSCRIPT%
 ECHO [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls">>"%PSSCRIPT%"
-ECHO Invoke-WebRequest "https://github.com/Electra-project/Electra-Bootstrap/releases/download/v1.0/ElectraBootstrap.zip" -OutFile "C:\mysafeplace\package.zip">>"%PSSCRIPT%"
-SET PowerShellDir=C:\Windows\System32\WindowsPowerShell\v1.0
+ECHO Invoke-WebRequest "https://github.com/Electra-project/Electra-Bootstrap/releases/download/v1.0/ElectraBootstrap.zip" -OutFile "%SYSTEMDRIVE%\ElectraWalletBackup\ElectraBootstrap.zip">>"%PSSCRIPT%"
 CD /D %PowerShellDir%
 Powershell -ExecutionPolicy Bypass -Command "& %PSSCRIPT%"
 echo.
@@ -74,15 +76,21 @@ rmdir /Q %APPDATA%\Electra\database
 rmdir /Q %APPDATA%\Electra\txleveldb
 rmdir /Q %APPDATA%\Electra\sporks
 rmdir /Q %APPDATA%\Electra\zerocoin
+rmdir /Q %APPDATA%\Electra\blocks
+cls
 echo.
-echo Files Deleted
+echo Old Files Deleted
 echo.
 attrib -r %APPDATA%\Electra\wallet.dat
+echo Unzipping files to %APPDATA%\Electra
+PowerShell Expand-Archive -Path "%SYSTEMDRIVE%\ElectraWalletBackup\ElectraBootstrap.zip" -DestinationPath "%APPDATA%\Electra"
+del /S /Q %SYSTEMDRIVE%\ElectraWalletBackup\ElectraBootstrap.zip
+del /S /Q %SYSTEMDRIVE%\ElectraWalletBackup\tmpDlFile.ps1
 echo Unlocking files wallet.dat, peers.dat and Electra.conf to be used for wallet...
 echo.
-echo Files Unlocked
+echo Wallet data unlocked for safe use
 echo.
-echo When you are finished, please run the wallet.
+echo Please run the Electra Wallet to ensure bootstrap successful.
 echo.
 ) ELSE (
 echo No Electra folder detected.
