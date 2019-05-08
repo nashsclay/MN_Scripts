@@ -9,14 +9,14 @@ curl -k -O -L https://github.com/Electra-project/Electra-Bootstrap/releases/down
 sudo mkdir fix_electra_bootstrap
 sudo unzip -o ElectraBootstrap.zip -d fix_electra_bootstrap
 cd fix_electra_bootstrap
-sudo rm -R "$HOME/Library/Application\ Support/Electra/blocks"
-sudo rm -R "$HOME/Library/Application\ Support/Electra/chainstate"
-sudo rm -R "$HOME/Library/Application\ Support/Electra/database"
-sudo rm -R "$HOME/Library/Application\ Support/Electra/blocks"
-sudo rm -R "$HOME/Library/Application\ Support/Electra/sporks"
-sudo rm -R "$HOME/Library/Application\ Support/Electra/zerocoin"
-sudo rm "~/Library/Application\ Support/Electra/budget.dat" "~/Library/Application\ Support/Electra/db.log" "~/Library/Application\ Support/Electra/debug.log" "~/Library/Application\ Support/Electra/fee_estimates.dat" "~/Library/Application\ Support/Electra/mncache.dat" "~/Library/Application\ Support/Electra/mnpayments.dat" "~/Library/Application\ Support/Electra/peers.dat" "~/Library/Application\ Support/Electra/.lock"
-sudo mv chainstate blocks sporks zerocoin peers.dat "~/Library/Application\ Support/Electra"
+sudo rm -R $HOME/Library/Application\ Support/Electra/blocks
+sudo rm -R $HOME/Library/Application\ Support/Electra/chainstate
+sudo rm -R $HOME/Library/Application\ Support/Electra/database
+sudo rm -R $HOME/Library/Application\ Support/Electra/blocks
+sudo rm -R $HOME/Library/Application\ Support/Electra/sporks
+sudo rm -R $HOME/Library/Application\ Support/Electra/zerocoin
+sudo rm $HOME/Library/Application\ Support/Electra/budget.dat $HOME/Library/Application\ Support/Electra/db.log $HOME/Library/Application\ Support/Electra/debug.log $HOME/Library/Application\ Support/Electra/fee_estimates.dat $HOME/Library/Application\ Support/Electra/mncache.dat $HOME/Library/Application\ Support/Electra/mnpayments.dat $HOME/Library/Application\ Support/Electra/peers.dat $HOME/Library/Application\ Support/Electra/.lock
+sudo mv chainstate blocks sporks zerocoin peers.dat $HOME/Library/Application\ Support/Electra
 cd /usr/local/bin/
 sudo rm -R fix_electra_bootstrap
 sudo rm ElectraBootstrap.zip
